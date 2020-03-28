@@ -1,0 +1,9 @@
+{
+    "name": "bread-delivery-api",
+    "description": "Vue and Express API Bread Store/Delivery app",
+    "author": "kathryn",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js"
+    }
+}
