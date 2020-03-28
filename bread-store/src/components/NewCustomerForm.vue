@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- write template here -->
-        <div class="alert alert-danger" v-show="errors && errors.length > 0">
+       <div class="alert alert-danger" v-show="errors && errors.length > 0">
             <li v-for="error in errors">{{ error }}</li>
         </div>
 
