@@ -34,22 +34,28 @@ export default {
     CustomerTable,
     StudentMessage
   },
+  mounted() { //call updateStudents method below; this.student = this student in Vue viewmodel
+    this.updateCustomers()
+  },
   methods: {
-    newCustomerAdded(customer) {
-      this.customers.push(customers)
-      this.customers.sort(function(s1, s2) { //keep customers sorted, case insensitive
-        return s1.name.toLowerCase() > s2.name.toLowerCase() ? -1 : 1
+    newCustomerAdded(customer) { //call addCustomer method in CustService.js
+      this.$customer_api.addCustomer(customer).then( customer => {
+        this.updateCustomers() //calls method below to update customer array
       })
     },
-    studentArrivedOrLeft(student) {
-      this.message = student.present ? 'Welcome,' : 'Goodbye, '
-      this.name = student.name
-    },
-    studentDeleted(student) {
+    //studentArrivedOrLeft(student) {
+      
+    //},
+    //studentDeleted(student) {
       //this filters out deleted student; makes new array w/out deleted student
-      this.students = this.students.filter( function(s) { return s != student })
-    }
+      
+  //}
+  updateCustomers() {
+    this.$customer_api.getAllCustomers().then( customers => {
+      this.customers = customers
+    })
   }
+}
 }
 </script>
 
