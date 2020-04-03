@@ -4,12 +4,12 @@
     <NewCustomerForm v-on:customer-added="newCustomerAdded"></NewCustomerForm>
     <CustomerTable 
       v-bind:customers="customers" 
-      v-on:student-present="studentArrivedOrLeft"
-      v-on:delete-student="studentDeleted">
+      v-on:order-delivered="orderDeliveredOrNot">
+    
       </CustomerTable> 
               <!-- v-on is an event handler for student-present event; call method studentArrivedOrLeft in App.vue-->
     <!-- v-bind message and name to StudentMessage-->
-     <StudentMessage v-bind:message="message" v-bind:name="name"></StudentMessage>
+     <CustomerMessage v-bind:message="message" v-bind:name="name"> </CustomerMessage>
 
   </div>
 </template>
@@ -17,7 +17,7 @@
 <script>
 import NewCustomerForm from './components/NewCustomerForm.vue'
 import CustomerTable from './components/CustomerTable.vue'
-import StudentMessage from './components/StudentMessage'
+import CustomerMessage from './components/CustomerMessage'
 
 
 export default {
@@ -32,7 +32,7 @@ export default {
   components: {
     NewCustomerForm,
     CustomerTable,
-    StudentMessage
+    CustomerMessage
   },
   mounted() { //call updateStudents method below; this.student = this student in Vue viewmodel
     this.updateCustomers()
@@ -43,13 +43,11 @@ export default {
         this.updateCustomers() //calls method below to update customer array
       })
     },
-    //studentArrivedOrLeft(student) {
-      
-    //},
-    //studentDeleted(student) {
-      //this filters out deleted student; makes new array w/out deleted student
-      
-  //}
+    orderDeliveredOrNot(customer) {
+      this.message = customer.delivered ? 'Delivered to ': 'Not delivered yet, '
+      this.name = customer.name
+    },
+    
   updateCustomers() {
     this.$customer_api.getAllCustomers().then( customers => {
       this.customers = customers

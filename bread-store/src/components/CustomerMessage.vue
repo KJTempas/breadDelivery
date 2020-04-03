@@ -10,7 +10,7 @@
 <script>
 //create and export component here
 export default { //this appeared automatically when I typed script
-    name: 'StudentMessage',
+    name: 'CustomerMessage',
     data() {
         return {
             seeMessage: false

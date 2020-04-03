@@ -5,10 +5,8 @@
     <tr v-bind:class="'present-' + student.present">
         <td>{{ customer.name }}</td>
         <td>{{ customer.address }}</td>
-        <td><input type="checkbox" v-model="student.present" v-on:change="checked(student)"></td>
-        <td v-show="edit">
-            <img class="delete-icon" v-on:click="deleteStudent(student)" src="@/assets/delete.png">
-            </td>
+        <td><input type="checkbox" v-model="customer.delivered" v-on:change="checked(customer)"></td>
+        
     </tr>
 </template>
 
@@ -21,15 +19,12 @@ export default {
     },
     methods: {
         checked(customer) {
-            this.$emit('student-present', student)
-        },
-        deleteStudent(student) {
-            if (confirm(`Delete ${student.name}?`)) {
-                this.$emit('delete-student', student)
-            }
+            this.$emit('order-delivered', customer)
+        }
+        
         }
     }
-}
+
 </script>
 
 <style>
