@@ -41,21 +41,28 @@ export default {
     newCustomerAdded(customer) { //call addCustomer method in CustService.js
       this.$customer_api.addCustomer(customer).then( customer => {
         this.updateCustomers() //calls method below to update customer array
+      }).catch(err => {
+        let msg = err.response.data.join(', ')
+        alert('Error adding customer.\n' + msg)
       })
     },
     orderDeliveredOrNot(customer) {
-      this.message = customer.delivered ? 'Delivered to ': 'Not delivered yet, '
+      this.$customer_api.updateCustomer(customer).then( () => {
+      this.message = customer.delivered ? 'Delivered to ': 'Not delivered yet, '  
       this.name = customer.name
+      this.updateCustomers()  //calling method below
+      })
     },
     
   updateCustomers() {
     this.$customer_api.getAllCustomers().then( customers => {
-      this.customers = customers
+      this.customers = customers  //sets this.student equal to students in the Vue model
     })
   }
 }
 }
 </script>
+
 
 <style>
 #app {

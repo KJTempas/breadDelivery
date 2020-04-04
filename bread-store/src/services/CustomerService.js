@@ -10,7 +10,13 @@ export default {
     },
 
     addCustomer(customer) {
-        return axios.post(base_url, student).then(response => {
+        return axios.post(base_url, customer).then(response => {
+            return response.data
+        })
+    },
+
+    updateCustomer(customer) {
+        return axios.patch(`${base_url}/${customer.id}`, customer).then(response => {
             return response.data
         })
     }
