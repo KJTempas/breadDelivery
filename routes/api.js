@@ -21,7 +21,7 @@ router.post('/customers', function(req, res, next) {
             let messages = err.errors.map( e => e.message )
             return res.status(400).json(messages)  //400 is bad request from user
         }
-        return next(err)
+        return next(err) //otherwise pass error to error handler in server.js
     })
 })
 
@@ -37,7 +37,7 @@ router.patch('/customers/:id', function(req, res, next) {
         
     }).catch( err => {
         if (err instanceof Sequelize.ValidationError) {
-            let message = err.errors.map( (e) => e.message)
+            let messages = err.errors.map( (e) => e.message)
             return res.status(400).json(messages) //400 is bad request from user
         }
         return next(err)

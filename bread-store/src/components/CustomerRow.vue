@@ -2,7 +2,7 @@
 <template> <!--note that template element contains a <tr>, not a <div>  -->
    <!--template elements must contain exactly one child element(like the <tr>)  -->
        <!--but that element can contain many children   -->
-    <tr v-bind:class="'present-' + student.present">
+    <tr v-bind:class="'delivered-' + customer.delivered">
         <td>{{ customer.name }}</td>
         <td>{{ customer.address }}</td>
         <td><input type="checkbox" v-model="customer.delivered" v-on:change="checked(customer)"></td>
