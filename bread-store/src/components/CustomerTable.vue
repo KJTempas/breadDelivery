@@ -10,6 +10,8 @@
                     <tr>
                         <th>Customer Name</th>
                         <th>Address</th>
+                        <th>Email</th>
+                        <th>Active?</th>
                         <th>Delivered?</th>
                         
                     </tr>

@@ -8,7 +8,15 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
             unique: true
-        }, delivered: {
+        }, email: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true
+        },active: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: true
+        },delivered: {
             type: DataTypes.BOOLEAN,
             allowNull: false,
             defaultValue: false

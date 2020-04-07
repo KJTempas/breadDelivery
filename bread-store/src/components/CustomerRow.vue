@@ -5,6 +5,8 @@
     <tr v-bind:class="'delivered-' + customer.delivered">
         <td>{{ customer.name }}</td>
         <td>{{ customer.address }}</td>
+        <td>{{customer.email }}</td>
+        <td><input type="checkbox" v-model="customer.active" v-on:change="active(customer)"></td>
         <td><input type="checkbox" v-model="customer.delivered" v-on:change="checked(customer)"></td>
         
     </tr>
@@ -20,6 +22,9 @@ export default {
     methods: {
         checked(customer) {
             this.$emit('order-delivered', customer)
+        },
+        active(customer) {
+            this.$emit('active', customer)
         }
         
         }

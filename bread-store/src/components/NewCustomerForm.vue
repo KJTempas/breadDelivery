@@ -13,10 +13,17 @@
                 <label for="name">Customer Name</label>
                 <input id="name" class="form-control" v-model.trim="newCustomerName">
               </div>
+
               <div class="form-group">
                 <label for="address">Address</label>
                 <input id="address" class="form-control" v-model.trim="newAddress">
               </div>
+
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" class="form-control" v-model.trim="newEmail">
+              </div>
+
               <button class="btn btn-primary" v-on:click.prevent="addCustomer">Add</button>
             </form>
 
@@ -33,20 +40,22 @@ export default {
         return {
             newCustomerName: '',
             newAddress: '',
+            newEmail: '',
             errors: []
         }
     },
     methods: {
         addCustomer() {
             this.errors = []
-            if (this.newCustomerName && this.newAddress) {
-                let customer = { name: this.newCustomerName, address: this.newAddress, present: false}
+            if (this.newCustomerName && this.newAddress && this.newEmail) { //need all of these filled out
+                let customer = { name: this.newCustomerName, address: this.newAddress, email: this.newEmail, active: true}
                 // emit message to parent with new student
                 this.$emit('customer-added', customer)
                 this.newCustomerName= ''
                 this.newAddress= ''
+                this.newEmail= ''
             } else {
-                this.errors.push('Name and Address are required.')
+                this.errors.push('Name, Address and Email are required.')
             }
         }
     }
