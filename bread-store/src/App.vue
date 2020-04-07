@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-
+    <Header></Header>
     <NewCustomerForm v-on:customer-added="newCustomerAdded"></NewCustomerForm>
     <CustomerTable 
       v-bind:customers="customers" 
@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import Header from '@/components/Header'
 import NewCustomerForm from './components/NewCustomerForm.vue'
 import CustomerTable from './components/CustomerTable.vue'
 import CustomerMessage from './components/CustomerMessage'
@@ -30,6 +31,7 @@ export default {
     }
   },
   components: {
+    Header,
     NewCustomerForm,
     CustomerTable,
     CustomerMessage
@@ -71,6 +73,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 10px;
 }
 </style>
