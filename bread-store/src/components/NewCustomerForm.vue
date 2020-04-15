@@ -7,7 +7,9 @@
 
         <div class="card add-customer m-2 p-2">
             <form>
-              <h4 class="card-title">Add new customer</h4>
+              <h4 class="card-title">Welcome to Wheatfield's Bakery Delivery! <br>
+              We deliver two fresh loaves to your door every week <br>
+              Register new customers here<br> Customers are notified by email when their bread has been delivered</h4>
 
               <div class="form-group">
                 <label for="name">Customer Name</label>
