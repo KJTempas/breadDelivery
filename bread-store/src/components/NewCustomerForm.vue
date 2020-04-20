@@ -50,6 +50,16 @@ export default {
         addCustomer() {
             this.errors = []
             if (this.newCustomerName && this.newAddress && this.newEmail) { //need all of these filled out
+                //using Mailgun
+                $('jquery_selector').mailgun_validator({
+                api_key: 'public-api-key',
+                 in_progress: in_progress_callback, // called when request is made to validator
+                success: success_callback,         // called when validator has returned
+                error: validation_error,           // called when an error reaching the validator has occured
+   });
+                
+                
+                
                 let customer = { name: this.newCustomerName, address: this.newAddress, email: this.newEmail, active: true}
                 // emit message to parent with new student
                 this.$emit('customer-added', customer)

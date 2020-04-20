@@ -63,6 +63,30 @@ export default {
   }
 }
 }
+/* jQuery example of using Mailgun email validation - from https://devcenter.heroku.com/articles/mailgun-validations#provisioning-the-add-on
+$('jquery_selector').mailgun_validator({
+       api_key: 'public-api-key',
+       in_progress: in_progress_callback, // called when request is made to validator
+       success: success_callback,         // called when validator has returned
+       error: validation_error,           // called when an error reaching the validator has occured
+   });
+*/
+
+/* from https://www.npmjs.com/package/mailgun-js
+var api_key = 'XXXXXXXXXXXXXXXXXXXXXXX';
+var domain = 'www.mydomain.com';
+var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
+ 
+var data = {
+  from: 'Excited User <me@samples.mailgun.org>',
+  to: 'serobnic@mail.ru',
+  subject: 'Hello',
+  text: 'Testing some Mailgun awesomeness!'
+};
+ 
+mailgun.messages().send(data, function (error, body) {
+  console.log(body);
+});*/
 </script>
 
 
@@ -76,3 +100,5 @@ export default {
   margin-top: 10px;
 }
 </style>
+
+
