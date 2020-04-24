@@ -52,6 +52,7 @@ export default {
       this.$customer_api.updateCustomer(customer).then( () => {
       this.message = customer.delivered ? 'Delivered to ': 'Not delivered yet, '  
       this.name = customer.name
+      sendEmailToCustomer(customer.email)
       this.updateCustomers()  //calling method below
       })
     },
@@ -60,33 +61,40 @@ export default {
     this.$customer_api.getAllCustomers().then( customers => {
       this.customers = customers  //sets this.student equal to students in the Vue model
     })
+  },
+
+  sendEmailToCustomer() {
+    const mailgun = require("mailgun-js");
+    //const DOMAIN = 'YOUR_DOMAIN_NAME';
+    
+    const domain = sandbox4323e2a2ea5c47fbb26e561685d6b5e1.mailgun.org;
+    let api_key = '7fe0c716602413900922178eedeff712-f135b0f1-b1ef7764';
+
+    //Your sending email address
+    //var from_who = 'kjtempas@gmail.com';
+
+    const mg = mailgun({apiKey: api_key, domain: DOMAIN});
+    const data = {
+      //from: 'Excited User <me@samples.mailgun.org>',
+      //from: 'kjtempas@gmail.com, sandbox4323e2a2ea5c47fbb26e561685d6b5e1.mailgun.org'
+      from: 'sandbox4323e2a2ea5c47fbb26e561685d6b5e1.mailgun.org',
+      //to: 'bar@example.com, YOU@YOUR_DOMAIN_NAME',
+      to: 'this.customer.email',
+      subject: 'Hello',
+      text: 'Your bread from Wheatfield\'s Bakery has been delivered!'
+    };
+    mg.messages().send(data, function (error, body) {
+      console.log(body);
+    });
   }
 }
 }
-/* jQuery example of using Mailgun email validation - from https://devcenter.heroku.com/articles/mailgun-validations#provisioning-the-add-on
-$('jquery_selector').mailgun_validator({
-       api_key: 'public-api-key',
-       in_progress: in_progress_callback, // called when request is made to validator
-       success: success_callback,         // called when validator has returned
-       error: validation_error,           // called when an error reaching the validator has occured
-   });
-*/
 
-/* from https://www.npmjs.com/package/mailgun-js
-var api_key = 'XXXXXXXXXXXXXXXXXXXXXXX';
-var domain = 'www.mydomain.com';
-var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
- 
-var data = {
-  from: 'Excited User <me@samples.mailgun.org>',
-  to: 'serobnic@mail.ru',
-  subject: 'Hello',
-  text: 'Testing some Mailgun awesomeness!'
-};
- 
-mailgun.messages().send(data, function (error, body) {
-  console.log(body);
-});*/
+
+
+
+
+
 </script>
 
 
