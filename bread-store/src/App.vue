@@ -21,6 +21,7 @@ import CustomerTable from './components/CustomerTable.vue'
 import CustomerMessage from './components/CustomerMessage'
 
 
+
 export default {
   name: 'app',
   data() {
@@ -63,33 +64,11 @@ export default {
     })
   },
 
-  sendEmailToCustomer() {
-    const mailgun = require("mailgun-js");
-    //const DOMAIN = 'YOUR_DOMAIN_NAME';
-    
-    const domain = sandbox4323e2a2ea5c47fbb26e561685d6b5e1.mailgun.org;
-    let api_key = '7fe0c716602413900922178eedeff712-f135b0f1-b1ef7764';
-
-    //Your sending email address
-    //var from_who = 'kjtempas@gmail.com';
-
-    const mg = mailgun({apiKey: api_key, domain: DOMAIN});
-    const data = {
-      //from: 'Excited User <me@samples.mailgun.org>',
-      //from: 'kjtempas@gmail.com, sandbox4323e2a2ea5c47fbb26e561685d6b5e1.mailgun.org'
-      from: 'sandbox4323e2a2ea5c47fbb26e561685d6b5e1.mailgun.org',
-      //to: 'bar@example.com, YOU@YOUR_DOMAIN_NAME',
-      to: 'this.customer.email',
-      subject: 'Hello',
-      text: 'Your bread from Wheatfield\'s Bakery has been delivered!'
-    };
-    mg.messages().send(data, function (error, body) {
-      console.log(body);
-    });
-  }
+  
 }
 }
-
+//where does this go?
+//
 
 
 
