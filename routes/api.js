@@ -2,7 +2,7 @@ let express = require('express')
 let Sequelize = require('sequelize')
 let db = require('../models')
 let Customer = db.Customer
-var Mailgun = require('mailgun-js');
+//var Mailgun = require('mailgun-js');
 
 let router = express.Router()
 //route for GET from dbase
@@ -33,57 +33,17 @@ router.patch('/customers/:id', function(req, res, next) {
         if (!rowsModified[0]) {
             return res.status(404).send('Not found') //404 is code for not found; customer w/ this ID not found
         }else {
-            Customer.findOne({where: {name: req.params.id}}) 
-    
-            .then(customer => {   //need to get email HELP NEEDED HERE
-                if(customer) {  //if customer in db, return response in as json
-                    //return res.json(customer)
-                    const mailgun = require("mailgun-js");
-                    //const domain = removed it
-                    //let mailgun api_key = removed it
-                
-                    //Your sending email address
-                    //var from_who = 'kjtempas@gmail.com';
-                
-                    const mg = mailgun({apiKey: api_key, domain: DOMAIN});
-                    const data = {
-                      //from: 'Excited User <me@samples.mailgun.org>',
-                      //from: 'kjtempas@gmail.com, sandbox4323e2a2ea5c47fbb26e561685d6b5e1.mailgun.org'
-                      from: 'sandbox4323e2a2ea5c47fbb26e561685d6b5e1.mailgun.org',
-                      //to: 'bar@example.com, YOU@YOUR_DOMAIN_NAME',
-                      to: customer.email,
-                      subject: 'Hello',
-                      text: 'Your bread from Wheatfield\'s Bakery has been delivered!'
-                    };
-                    mg.messages().send(data, function (error, body) {
-                      console.log(body);
-                    });
-                  }
                 return res.send('ok')
             }
-            
+        
         }).catch( err => {
             if (err instanceof Sequelize.ValidationError) {
                 let messages = err.errors.map( (e) => e.message)
                 return res.status(400).json(messages) //400 is bad request from user
             }
             return next(err)
-        })
-
-
-
-
-                
-
-
-
-
-
-
-
-
-                
+        })        
 })
 
-
 module.exports = router
+
