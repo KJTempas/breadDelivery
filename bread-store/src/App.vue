@@ -67,8 +67,6 @@ export default {
   
 }
 }
-//where does this go?
-//
 
 
 

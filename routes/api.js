@@ -39,8 +39,8 @@ router.patch('/customers/:id', function(req, res, next) {
                 if(customer) {  //if customer in db, return response in as json
                     //return res.json(customer)
                     const mailgun = require("mailgun-js");
-                    const domain = sandbox4323e2a2ea5c47fbb26e561685d6b5e1.mailgun.org;
-                    let api_key = '7fe0c716602413900922178eedeff712-f135b0f1-b1ef7764';
+                    //const domain = removed it
+                    //let mailgun api_key = removed it
                 
                     //Your sending email address
                     //var from_who = 'kjtempas@gmail.com';
