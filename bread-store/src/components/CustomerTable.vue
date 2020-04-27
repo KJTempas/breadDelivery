@@ -2,7 +2,7 @@
     <div>
         <!-- write template here -->
         <div class="card customer-list m-2 p-2">
-            <h4 class="card-title">Customers</h4>
+            <h4 class="card-title" id="customers">Customers</h4>
 
             
             <div id="customer-table">
@@ -57,5 +57,8 @@ export default {
 </script>
 
 <style>
-/* write any styles for this component here */
+
+#customers{
+    background-color:blanchedalmond
+}
 </style>

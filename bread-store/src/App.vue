@@ -20,8 +20,6 @@ import NewCustomerForm from './components/NewCustomerForm.vue'
 import CustomerTable from './components/CustomerTable.vue'
 import CustomerMessage from './components/CustomerMessage'
 
-
-
 export default {
   name: 'app',
   data() {
